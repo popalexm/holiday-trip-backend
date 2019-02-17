@@ -1,8 +1,23 @@
-package com.hazeldev.holidaytripbackend.models;
+package com.hazeldev.holidaytripbackend.models.database;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "checkpoints")
+@EntityListeners(AuditingEntityListener.class)
 public class TripCheckpoint {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer checkpointId;
+    private Integer plannedTripId;
     private Double checkpointLatitude;
     private Double checkpointLongitude;
     private String checkpointTitle;
@@ -11,16 +26,7 @@ public class TripCheckpoint {
     private boolean areDepartureNotificationsEnabled;
     private int checkpointColor;
 
-    public TripCheckpoint(Integer checkpointId, Double checkpointLatitude, Double checkpointLongitude, String checkpointTitle, String checkpointDescription,
-            boolean areArrivalNotificationsEnabled, boolean areDepartureNotificationsEnabled, int checkpointColor) {
-        this.checkpointId = checkpointId;
-        this.checkpointLatitude = checkpointLatitude;
-        this.checkpointLongitude = checkpointLongitude;
-        this.checkpointTitle = checkpointTitle;
-        this.checkpointDescription = checkpointDescription;
-        this.areArrivalNotificationsEnabled = areArrivalNotificationsEnabled;
-        this.areDepartureNotificationsEnabled = areDepartureNotificationsEnabled;
-        this.checkpointColor = checkpointColor;
+    public TripCheckpoint() {
     }
 
     public Integer getCheckpointId() {
@@ -85,5 +91,13 @@ public class TripCheckpoint {
 
     public void setCheckpointColor(int checkpointColor) {
         this.checkpointColor = checkpointColor;
+    }
+
+    public Integer getPlannedTripId() {
+        return plannedTripId;
+    }
+
+    public void setPlannedTripId(Integer plannedTripId) {
+        this.plannedTripId = plannedTripId;
     }
 }

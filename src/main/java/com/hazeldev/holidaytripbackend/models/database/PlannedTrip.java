@@ -1,19 +1,34 @@
-package com.hazeldev.holidaytripbackend.models;
+package com.hazeldev.holidaytripbackend.models.database;
+
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
+@Entity
+@Table(name = "planned_trips")
+@EntityListeners(AuditingEntityListener.class)
 public class PlannedTrip {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer plannedTripId;
+    private Integer userId;
+    @NotBlank
     private String plannedTripName;
     private String plannedTripDescription;
+    @OneToMany(mappedBy = "checkpointId")
     private List<TripCheckpoint> plannedTripCheckpoints;
 
-    public PlannedTrip(Integer plannedTripId, String plannedTripName, String plannedTripDescription, List<TripCheckpoint> plannedTripCheckpoints) {
-        this.plannedTripId = plannedTripId;
-        this.plannedTripName = plannedTripName;
-        this.plannedTripDescription = plannedTripDescription;
-        this.plannedTripCheckpoints = plannedTripCheckpoints;
+    public PlannedTrip() {
     }
 
     public Integer getPlannedTripId() {
@@ -46,5 +61,13 @@ public class PlannedTrip {
 
     public void setPlannedTripCheckpoints(List<TripCheckpoint> plannedTripCheckpoints) {
         this.plannedTripCheckpoints = plannedTripCheckpoints;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 }
