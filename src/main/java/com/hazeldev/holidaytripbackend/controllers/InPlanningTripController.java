@@ -28,6 +28,7 @@ public class InPlanningTripController {
     @ResponseBody
     public Integer addInPlanningTripForUserId(@RequestBody InPlanningTripRequest inPlanningTripRequest, @RequestParam("userId") Integer userId) {
         InPlanningTrip inPlanningTrip = new InPlanningTrip();
+        inPlanningTrip.setUserId(userId);
         inPlanningTrip.setTripName(inPlanningTripRequest.getTripName());
         inPlanningTrip.setTripDescription(inPlanningTripRequest.getTripDescription());
         InPlanningTrip trip = inPlanningTripRepository.save(inPlanningTrip);
