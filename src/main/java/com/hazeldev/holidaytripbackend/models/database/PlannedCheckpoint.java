@@ -10,9 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "checkpoints")
+@Table(name = "planned_checkpoints")
 @EntityListeners(AuditingEntityListener.class)
-public class TripCheckpoint {
+public class PlannedCheckpoint {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,7 +26,7 @@ public class TripCheckpoint {
     private boolean areDepartureNotificationsEnabled;
     private int checkpointColor;
 
-    public TripCheckpoint() {
+    public PlannedCheckpoint() {
     }
 
     public Integer getCheckpointId() {

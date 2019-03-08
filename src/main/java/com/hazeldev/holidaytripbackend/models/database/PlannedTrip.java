@@ -26,7 +26,7 @@ public class PlannedTrip {
     private String plannedTripName;
     private String plannedTripDescription;
     @OneToMany(mappedBy = "checkpointId")
-    private List<TripCheckpoint> plannedTripCheckpoints;
+    private List<PlannedCheckpoint> plannedTripCheckpoints;
 
     public PlannedTrip() {
     }
@@ -55,12 +55,12 @@ public class PlannedTrip {
         this.plannedTripDescription = plannedTripDescription;
     }
 
-    public List<TripCheckpoint> getPlannedTripCheckpoints() {
+    public List<PlannedCheckpoint> getPlannedTripCheckpoints() {
         return plannedTripCheckpoints;
     }
 
-    public void setPlannedTripCheckpoints(List<TripCheckpoint> plannedTripCheckpoints) {
-        this.plannedTripCheckpoints = plannedTripCheckpoints;
+    public void setPlannedTripCheckpoints(List<PlannedCheckpoint> plannedPlannedCheckpoints) {
+        this.plannedTripCheckpoints = plannedPlannedCheckpoints;
     }
 
     public Integer getUserId() {
