@@ -1,6 +1,6 @@
 package com.hazeldev.holidaytripbackend.models.requestModels;
 
-public class InPlanningTripRequest {
+public class AddInPlanningTripRequest {
 
     private String plannedTripName;
     private String plannedTripDescription;
@@ -9,15 +9,7 @@ public class InPlanningTripRequest {
         return plannedTripName;
     }
 
-    public void setTripName(String plannedTripName) {
-        this.plannedTripName = plannedTripName;
-    }
-
     public String getTripDescription() {
         return plannedTripDescription;
-    }
-
-    public void setTripDescription(String plannedTripDescription) {
-        this.plannedTripDescription = plannedTripDescription;
     }
 }
