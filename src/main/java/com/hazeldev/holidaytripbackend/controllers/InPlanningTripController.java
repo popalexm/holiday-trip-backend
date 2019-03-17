@@ -4,6 +4,7 @@ import com.hazeldev.holidaytripbackend.models.database.InPlanningCheckpoint;
 import com.hazeldev.holidaytripbackend.models.database.InPlanningTrip;
 import com.hazeldev.holidaytripbackend.models.requestModels.AddInPlanningCheckpointRequest;
 import com.hazeldev.holidaytripbackend.models.requestModels.AddInPlanningTripRequest;
+import com.hazeldev.holidaytripbackend.models.requestModels.UpdateCheckpointLocationRequest;
 import com.hazeldev.holidaytripbackend.repositories.InPlanningCheckpointsRepository;
 import com.hazeldev.holidaytripbackend.repositories.InPlanningTripRepository;
 
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Optional;
 
 @RestController
 public class InPlanningTripController {
@@ -35,7 +38,7 @@ public class InPlanningTripController {
         inPlanningTrip.setUserId(userId);
         inPlanningTrip.setTripName(request.getTripName());
         inPlanningTrip.setTripDescription(request.getTripDescription());
-        
+
         InPlanningTrip trip = inPlanningTripRepository.save(inPlanningTrip);
         return trip.getTripId();
     }
@@ -64,6 +67,26 @@ public class InPlanningTripController {
     @RequestMapping(value = "/delete-in-planning-checkpoint-for-trip-id", method = RequestMethod.DELETE)
     public Long deleteCheckpointForTripId(@RequestParam("tripId") Integer tripId, @RequestParam("checkpointId") Integer checkpointId) {
         return inPlanningCheckpointRepository.deleteByCheckpointIdAndTripId(checkpointId, tripId);
+    }
+
+    @RequestMapping(value = "/update-in-planning-checkpoint-location", method = RequestMethod.PATCH)
+    @ResponseBody
+    public Integer updateCheckpointLocationTripId(@RequestParam("userId") Integer userId, @RequestBody UpdateCheckpointLocationRequest request) {
+
+        Optional<InPlanningCheckpoint> checkpointResult = inPlanningCheckpointRepository.findById(request.getCheckpointId());
+        if (checkpointResult.isPresent()) {
+            InPlanningCheckpoint checkpoint = checkpointResult.get();
+
+            checkpoint.setCheckpointLatitude(request.getLatitude());
+            checkpoint.setCheckpointLongitude(request.getLongitude());
+
+            InPlanningCheckpoint updatedCheckpoint = inPlanningCheckpointRepository.save(checkpoint);
+            return updatedCheckpoint.getCheckpointId();
+
+        } else {
+            //TODO See about how to return custom response in case of checkpoint not found by id, instead of returning null
+            return null;
+        }
     }
 
     @RequestMapping(value = "/get-current-in-planning-trip", method = RequestMethod.GET)
