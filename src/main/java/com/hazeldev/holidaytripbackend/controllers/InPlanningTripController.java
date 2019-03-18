@@ -32,10 +32,10 @@ public class InPlanningTripController {
 
     @RequestMapping(value = "/post-in-planning-trip", method = RequestMethod.POST)
     @ResponseBody
-    public Integer addInPlanningTripForUserId(@RequestBody AddInPlanningTripRequest request, @RequestParam("userId") Integer userId) {
+    public Integer addInPlanningTripForUserId(@RequestBody AddInPlanningTripRequest request) {
         InPlanningTrip inPlanningTrip = new InPlanningTrip();
 
-        inPlanningTrip.setUserId(userId);
+        inPlanningTrip.setUserId(request.getUserId());
         inPlanningTrip.setTripName(request.getTripName());
         inPlanningTrip.setTripDescription(request.getTripDescription());
 
