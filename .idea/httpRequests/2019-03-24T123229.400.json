@@ -1,0 +1,7 @@
+{
+  "timestamp": "2019-03-23T22:32:29.410+0000",
+  "status": 400,
+  "error": "Bad Request",
+  "message": "Required Integer parameter 'tripId' is not present",
+  "path": "/delete-in-planning-checkpoint-for-trip-id"
+}

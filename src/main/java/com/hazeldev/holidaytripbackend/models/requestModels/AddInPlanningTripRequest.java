@@ -2,16 +2,16 @@ package com.hazeldev.holidaytripbackend.models.requestModels;
 
 public class AddInPlanningTripRequest {
 
-    private String plannedTripName;
-    private String plannedTripDescription;
+    private String tripName;
+    private String tripDescription;
     private Integer userId;
 
     public String getTripName() {
-        return plannedTripName;
+        return tripName;
     }
 
     public String getTripDescription() {
-        return plannedTripDescription;
+        return tripDescription;
     }
 
     public Integer getUserId() {
