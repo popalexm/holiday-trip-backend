@@ -28,5 +28,4 @@ public class PlannedTripsController {
         return plannedTripsRepository.findByUserId(userId);
     }
 
-
 }

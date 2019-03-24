@@ -11,8 +11,14 @@ import com.hazeldev.holidaytripbackend.repositories.InPlanningCheckpointsReposit
 import com.hazeldev.holidaytripbackend.repositories.InPlanningTripRepository;
 import com.hazeldev.holidaytripbackend.repositories.PlannedCheckpointRepository;
 import com.hazeldev.holidaytripbackend.repositories.PlannedTripsRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +34,8 @@ public class InPlanningTripController {
     private final PlannedCheckpointRepository plannedCheckpointsRepository;
 
     @Autowired
-    public InPlanningTripController(InPlanningTripRepository inPlanningTripRepository, InPlanningCheckpointsRepository inPlanningCheckpointRepository, PlannedTripsRepository plannedTripsRepository, PlannedCheckpointRepository plannedCheckpointsRepository) {
+    public InPlanningTripController(InPlanningTripRepository inPlanningTripRepository, InPlanningCheckpointsRepository inPlanningCheckpointRepository,
+            PlannedTripsRepository plannedTripsRepository, PlannedCheckpointRepository plannedCheckpointsRepository) {
         this.inPlanningTripRepository = inPlanningTripRepository;
         this.inPlanningCheckpointRepository = inPlanningCheckpointRepository;
         this.plannedTripsRepository = plannedTripsRepository;
@@ -134,6 +141,5 @@ public class InPlanningTripController {
 
         return savedPlannedTrip.getPlannedTripId();
     }
-
 
 }
