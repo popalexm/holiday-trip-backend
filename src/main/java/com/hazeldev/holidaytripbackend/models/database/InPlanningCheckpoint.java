@@ -2,12 +2,7 @@ package com.hazeldev.holidaytripbackend.models.database;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "in_planning_checkpoints")
@@ -54,7 +49,7 @@ public class InPlanningCheckpoint {
         this.checkpointDescription = checkpointDescription;
     }
 
-    public boolean isAreArrivalNotificationsEnabled() {
+    public boolean areArrivalNotificationsEnabled() {
         return areArrivalNotificationsEnabled;
     }
 
@@ -62,7 +57,7 @@ public class InPlanningCheckpoint {
         this.areArrivalNotificationsEnabled = areArrivalNotificationsEnabled;
     }
 
-    public boolean isAreDepartureNotificationsEnabled() {
+    public boolean areDepartureNotificationsEnabled() {
         return areDepartureNotificationsEnabled;
     }
 
