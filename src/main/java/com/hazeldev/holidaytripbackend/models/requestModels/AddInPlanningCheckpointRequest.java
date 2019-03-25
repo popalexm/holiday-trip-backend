@@ -1,16 +1,24 @@
 package com.hazeldev.holidaytripbackend.models.requestModels;
 
+import javax.validation.constraints.NotNull;
+
 public class AddInPlanningCheckpointRequest {
 
+    @NotNull
     private Integer checkpointId;
+    @NotNull
     private Integer orderInTrip;
     // Used for one-to-many relationships with the parent trip table
+    @NotNull
     private Integer tripId;
+    @NotNull
     private String checkpointTitle;
     private String checkpointDescription;
     private String checkpointAddress;
-    private double checkpointLatitude;
-    private double checkpointLongitude;
+    @NotNull
+    private Double checkpointLatitude;
+    @NotNull
+    private Double checkpointLongitude;
     private boolean areArrivalNotificationsEnabled;
     private boolean areDepartureNotificationsEnabled;
     private int checkpointMarkerColor;
