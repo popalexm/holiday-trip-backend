@@ -4,6 +4,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
@@ -24,7 +25,8 @@ public class InPlanningTrip {
     private Integer userId;
     private String tripName;
     private String tripDescription;
-    @OneToMany()
+
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "tripId")
     private Set<InPlanningCheckpoint> inPlanningCheckpoints;
 
